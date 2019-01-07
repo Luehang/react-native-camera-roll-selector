@@ -149,7 +149,7 @@ render() {
                     currentSelectedImage
                 );
                 console.log(
-                    "Selected images: "
+                    "Selected images: ",
                     selectedImages
                 );
             }}
