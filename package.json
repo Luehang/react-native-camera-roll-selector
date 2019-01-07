@@ -1,0 +1,68 @@
+{
+  "version": "1.0.0",
+  "name": "react-native-camera-roll-selector",
+  "description": "An easy and simple to use React Native component providing images selection from camera roll. The images in the camera roll are displayed with a custom high performant masonry layout. Supporting both iOS and Android. Free and made possible along with costly maintenance and updates by [Lue Hang](https://www.facebook.com/lue.hang) (the author).",
+  "keywords": [
+    "react-native-camera-roll-selector",
+    "react-native",
+    "masonry",
+    "camera roll",
+    "selector",
+    "picker",
+    "gallery",
+    "images",
+    "image layout",
+    "album",
+    "pictures",
+    "photo",
+    "ios",
+    "android"
+  ],
+  "homepage": "https://github.com/Luehang/react-native-camera-roll-selector",
+  "author": {
+    "name": "Lue Hang",
+    "email": "lue_hang@hotmail.com",
+    "url": "https://www.luehangs.site"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Luehang/react-native-camera-roll-selector"
+  },
+  "bugs": {
+    "url": "https://github.com/Luehang/react-native-camera-roll-selector/issues"
+  },
+  "directories": {
+    "example": "./example",
+    "src": "./src"
+  },
+  "main": "./src/index.js",
+  "files": [
+    "/src",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react-native-masonry-list": "^2.1.0"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "react": "16.6.3",
+    "react-native": "0.57.7",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.9.0",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-native": "^3.5.0"
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint src/ example/index.js example/ReactNativeCameraRollSelectorExample.js"
+  },
+  "license": "MIT"
+}
