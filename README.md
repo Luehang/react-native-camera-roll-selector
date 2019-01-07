@@ -30,16 +30,16 @@
 
 # Index
 
-- ### [Getting Started](#large_blue_diamond-getting-started)
-- ### [Manual Installation (Only iOS)](#large_blue_diamond-manual-installation-(ios))
-- ### [Usage Example](#large_blue_diamond-usage-example)
-- ### :books: [API](#large_blue_diamond-api)
-- ### [Props](#large_blue_diamond-props)
-- ### [Reference](#large_blue_diamond-reference)
-- ### [Example Project](#large_blue_diamond-example-project)
-- ### [Author](#large_blue_diamond-author)
-- ### [Contribute](#large_blue_diamond-contribute)
-- ### [License](#large_blue_diamond-license)
+### 1.  [Getting Started](#large_blue_diamond-getting-started)
+### 2.  [Manual Installation](#large_blue_diamond-manual-installation)
+### 3.  [Usage Example](#large_blue_diamond-usage-example)
+### 3.  :books: [API](#large_blue_diamond-api)
+### 4.  [Props](#large_blue_diamond-props)
+### 5.  [Reference](#large_blue_diamond-reference)
+### 6.  [Example Project](#large_blue_diamond-example-project)
+### 7.  [Author](#large_blue_diamond-author)
+### 8.  [Contribute](#large_blue_diamond-contribute)
+### 9.  [License](#large_blue_diamond-license)
 
 <br/>
 <br/>
@@ -72,7 +72,7 @@ $ yarn add react-native-camera-roll-selector
 <br/>
 <br/>
 
-## :large_blue_diamond: Manual Installation (iOS)
+## :large_blue_diamond: Manual Installation
 
 #### :information_source: **No further installation is required for Android.**
 
@@ -176,33 +176,33 @@ render() {
 
 ## :large_blue_diamond: Props
 
-- #### [`callback`](#small_blue_diamond-callback)
-- #### [`imagesPerRow`](#small_blue_diamond-imagesperrow)
-- #### [`initialColToRender`](#small_blue_diamond-initialcoltorender)
-- #### [`initialNumInColsToRender`](#small_blue_diamond-initialnumincolstorender)
-- #### [`spacing`](#small_blue_diamond-spacing)
-- #### [`groupTypes`](#small_blue_diamond-grouptypes)
-- #### [`assetType`](#small_blue_diamond-assettype)
-- #### [`maximum`](#small_blue_diamond-maximum)
-- #### [`selectSingleItem`](#small_blue_diamond-selectsingleitem)
-- #### [`selected`](#small_blue_diamond-selected)
-- #### [`backgroundColor`](#small_blue_diamond-backgroundcolor)
-- #### [`emptyText`](#small_blue_diamond-emptytext)
-- #### [`emptyTextStyle`](#small_blue_diamond-emptytextstyle)
-- #### [`loaderColor`](#small_blue_diamond-loaderColor)
-- #### [`customLoader`](#small_blue_diamond-customloader)
-- #### [`imageContainerStyle`](#small_blue_diamond-imagecontainerstyle)
-- #### [`markerColor`](#small_blue_diamond-markercolor)
-- #### [`customMarker`](#small_blue_diamond-custommarker)
-- #### [`renderIndividualHeader`](#small_blue_diamond-renderindividualheader)
-- #### [`renderIndividualFooter`](#small_blue_diamond-renderindividualfooter)
-- #### [`onPressImage`](#small_blue_diamond-onpressimage)
-- #### [`onLongPressImage`](#small_blue_diamond-onlongpressimage)
-- #### [`containerWidth`](#small_blue_diamond-containerWidth)
-- #### [`permissionDialogTitle`](#small_blue_diamond-permissiondialogtitle)
-- #### [`permissionDialogMessage`](#small_blue_diamond-permissiondialogmessage)
-- #### [`pendingAuthorizedView`](#small_blue_diamond-pendingauthorizedview)
-- #### [`notAuthorizedView`](#small_blue_diamond-notauthorizedview)
+#### -  [`callback`](#small_blue_diamond-callback)
+#### -  [`imagesPerRow`](#small_blue_diamond-imagesperrow)
+#### -  [`initialColToRender`](#small_blue_diamond-initialcoltorender)
+#### -  [`initialNumInColsToRender`](#small_blue_diamond-initialnumincolstorender)
+#### -  [`spacing`](#small_blue_diamond-spacing)
+#### -  [`groupTypes`](#small_blue_diamond-grouptypes)
+#### -  [`assetType`](#small_blue_diamond-assettype)
+#### -  [`maximum`](#small_blue_diamond-maximum)
+#### -  [`selectSingleItem`](#small_blue_diamond-selectsingleitem)
+#### -  [`selected`](#small_blue_diamond-selected)
+#### -  [`backgroundColor`](#small_blue_diamond-backgroundcolor)
+#### -  [`emptyText`](#small_blue_diamond-emptytext)
+#### -  [`emptyTextStyle`](#small_blue_diamond-emptytextstyle)
+#### -  [`loaderColor`](#small_blue_diamond-loadercolor)
+#### -  [`customLoader`](#small_blue_diamond-customloader)
+#### -  [`imageContainerStyle`](#small_blue_diamond-imagecontainerstyle)
+#### -  [`markerColor`](#small_blue_diamond-markercolor)
+#### -  [`customMarker`](#small_blue_diamond-custommarker)
+#### -  [`renderIndividualHeader`](#small_blue_diamond-renderindividualheader)
+#### -  [`renderIndividualFooter`](#small_blue_diamond-renderindividualfooter)
+#### -  [`onPressImage`](#small_blue_diamond-onpressimage)
+#### -  [`onLongPressImage`](#small_blue_diamond-onlongpressimage)
+#### -  [`containerWidth`](#small_blue_diamond-containerwidth)
+#### -  [`permissionDialogTitle`](#small_blue_diamond-permissiondialogtitle)
+#### -  [`permissionDialogMessage`](#small_blue_diamond-permissiondialogmessage)
+#### -  [`pendingAuthorizedView`](#small_blue_diamond-pendingauthorizedview)
+#### -  [`notAuthorizedView`](#small_blue_diamond-notauthorizedview)
 
 <br/>
 <br/>
