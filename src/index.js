@@ -116,16 +116,26 @@ export default class CameraRollSelector extends React.PureComponent {
                 }
             );
             if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                this.setState({ permissionGranted: "granted" });
+                this.setState({
+                    initialLoading: false,
+                    permissionGranted: "granted"
+                });
+                this.fetch();
             } else if (granted === PermissionsAndroid.RESULTS.DENIED) {
-                if (this.state.permissionGranted !== "denied") {
-                    this.setState({ permissionGranted: "denied" });
-                }
+                this.setState({
+                    initialLoading: false,
+                    permissionGranted: "denied"
+                });
             } else if (granted === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
-                this.setState({ permissionGranted: "never_ask_again" });
+                this.setState({
+                    initialLoading: false,
+                    permissionGranted: "never_ask_again"
+                });
             }
         }
-        this.fetch();
+        if (Platform.OS === "ios") {
+            this.fetch();
+        }
     }
 
     fetch() {
