@@ -31,15 +31,15 @@
 # Index
 
 ### 1.  [Getting Started](#large_blue_diamond-getting-started)
-### 2.  [Manual Installation](#large_blue_diamond-manual-installation)
+### 2.  [Manual Installation (Only iOS)](#large_blue_diamond-manual-installation)
 ### 3.  [Usage Example](#large_blue_diamond-usage-example)
-### 3.  :books: [API](#large_blue_diamond-api)
-### 4.  [Props](#large_blue_diamond-props)
-### 5.  [Reference](#large_blue_diamond-reference)
-### 6.  [Example Project](#large_blue_diamond-example-project)
-### 7.  [Author](#large_blue_diamond-author)
-### 8.  [Contribute](#large_blue_diamond-contribute)
-### 9.  [License](#large_blue_diamond-license)
+### 4.  :books: [API](#large_blue_diamond-api)
+### 5.  [Props](#large_blue_diamond-props)
+### 6.  [Reference](#large_blue_diamond-reference)
+### 7.  [Example Project](#large_blue_diamond-example-project)
+### 8.  [Author](#large_blue_diamond-author)
+### 9.  [Contribute](#large_blue_diamond-contribute)
+### 10.  [License](#large_blue_diamond-license)
 
 <br/>
 <br/>
@@ -614,7 +614,7 @@ Perform steps 1-2 to run locally:
 
 <br/>
 
-### 1. Clone the Repo
+### :small_blue_diamond: 1. Clone the Repo
 
 **Clone** `react-native-camera-roll-selector` locally. In a terminal, run:
 
@@ -624,7 +624,7 @@ $ git clone https://github.com/Luehang/react-native-camera-roll-selector.git rea
 
 <br/>
 
-### 2. Install and Run
+### :small_blue_diamond: 2. Install and Run
 
 ```bash
 $ cd react-native-camera-roll-selector/example/
@@ -672,15 +672,15 @@ Free and made possible along with costly maintenance and updates by [Lue Hang](h
 
 <br/>
 
-### Beginners
+### :large_blue_diamond: Contributors
 
-Not sure where to start, or a beginner? Take a look at the [issues page](https://github.com/Luehang/react-native-camera-roll-selector/issues).
+Contributors will be posted here.
 
 <br/>
 
-### Contributors
+### :small_blue_diamond: Beginners
 
-Contributors will be posted here.
+Not sure where to start, or a beginner? Take a look at the [issues page](https://github.com/Luehang/react-native-camera-roll-selector/issues).
 
 <br/>
 <br/>
