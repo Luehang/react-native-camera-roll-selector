@@ -117,18 +117,15 @@ export default class CameraRollSelector extends React.PureComponent {
             );
             if (granted === PermissionsAndroid.RESULTS.GRANTED) {
                 this.setState({
-                    initialLoading: false,
                     permissionGranted: "granted"
                 });
                 this.fetch();
             } else if (granted === PermissionsAndroid.RESULTS.DENIED) {
                 this.setState({
-                    initialLoading: false,
                     permissionGranted: "denied"
                 });
             } else if (granted === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
                 this.setState({
-                    initialLoading: false,
                     permissionGranted: "never_ask_again"
                 });
             }
@@ -211,14 +208,6 @@ export default class CameraRollSelector extends React.PureComponent {
             notAuthorizedView
         } = this.props;
 
-        if (this.state.initialLoading) {
-            return (
-                <View style={[styles.loader, {backgroundColor}]}>
-                    { customLoader || <ActivityIndicator size="large" color={loaderColor} style={styles.spinner} /> }
-                </View>
-            );
-        }
-
         if (this.state.permissionGranted === "denied") {
             return (
                 <View style={[styles.error, {backgroundColor}]}>
@@ -231,6 +220,14 @@ export default class CameraRollSelector extends React.PureComponent {
             return (
                 <View style={[styles.error, {backgroundColor}]}>
                     { notAuthorizedView || <Text style={{textAlign: "center"}}>Access denied to camera roll.</Text> }
+                </View>
+            );
+        }
+
+        if (this.state.initialLoading) {
+            return (
+                <View style={[styles.loader, {backgroundColor}]}>
+                    { customLoader || <ActivityIndicator size="large" color={loaderColor} style={styles.spinner} /> }
                 </View>
             );
         }
