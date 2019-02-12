@@ -17,6 +17,8 @@
 
 ![react-native-camera-roll-selector](https://luehangs.site/videos/react-native-camera-roll-selector-demo.gif)
 
+![react-native-camera-roll-selector landscape](https://luehangs.site/videos/react-native-camera-roll-selector-landscape.gif)
+
 #### :information_source: Learn more about React Native with project examples along with Cyber Security and Ethical Hacking at [LH LABS](https://www.luehangs.site).
 
 <br/>

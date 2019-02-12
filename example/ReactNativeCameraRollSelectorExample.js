@@ -14,39 +14,6 @@ const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 const platform = Platform.OS;
 
-export default class ReactNativeCameraRollSelectorExample extends Component {
-    render() {
-        return (
-            <View
-                style={styles.container}
-            >
-                <View style={[styles.statusBarTop, styles.header, styles.mobileHeader]}>
-                    <Text style={styles.title}>CameraRollSelector</Text>
-                </View>
-                <View style={styles.listTab}>
-                    <TouchableWithoutFeedback
-                        style={{borderTopLeftRadius: 7.5,}}
-                        onPress={() => Linking.openURL("https://luehangs.site")}>
-                            <View style={styles.tab}>
-                                <View style={{paddingBottom: 3}}>
-                                    <Text style={styles.tabTextOff}>REMOTE</Text>
-                                </View>
-                            </View>
-                    </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback>
-                        <View style={styles.tab}>
-                            <View style={[styles.tabTextUnderline, {paddingBottom: 3}]}>
-                                <Text style={styles.tabTextOn}>CAMERA ROLL</Text>
-                            </View>
-                        </View>
-                    </TouchableWithoutFeedback>
-                </View>
-                <CameraRollSelector />
-            </View>
-        );
-    }
-}
-
 function isIPhoneX() {
     const X_WIDTH = 375;
     const X_HEIGHT = 812;
@@ -61,9 +28,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#368FFA"
-    },
-    statusBarTop: {
-        paddingTop: isIPhoneX() ? 30 : platform === "ios" ? 20 : 0
     },
     header: {
         height: isIPhoneX() ? 88 : 64,
@@ -104,3 +68,58 @@ const styles = StyleSheet.create({
         fontSize: 25
     },
 });
+
+export default class ReactNativeCameraRollSelectorExample extends Component {
+    state = {
+        statusBarPaddingTop: isIPhoneX() ? 30 : platform === "ios" ? 20 : 0
+    }
+
+    onLayoutChange = (ev) => {
+        const { width, height } = ev.nativeEvent.layout;
+        let maxComp = Math.max(width, height);
+
+        if (width >= maxComp) {
+            this.setState({
+                statusBarPaddingTop: 0
+            });
+        } else if (width < maxComp) {
+            this.setState({
+                statusBarPaddingTop: isIPhoneX() ? 30 : platform === "ios" ? 20 : 0
+            });
+        }
+    }
+
+    render() {
+        const { statusBarPaddingTop } = this.state;
+
+        return (
+            <View
+                onLayout={(ev) => this.onLayoutChange(ev)}
+                style={styles.container}
+            >
+                <View style={[styles.header, styles.mobileHeader, { paddingTop: statusBarPaddingTop }]}>
+                    <Text style={styles.title}>CameraRollSelector</Text>
+                </View>
+                <View style={styles.listTab}>
+                    <TouchableWithoutFeedback
+                        style={{borderTopLeftRadius: 7.5,}}
+                        onPress={() => Linking.openURL("https://luehangs.site")}>
+                            <View style={styles.tab}>
+                                <View style={{paddingBottom: 3}}>
+                                    <Text style={styles.tabTextOff}>REMOTE</Text>
+                                </View>
+                            </View>
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback>
+                        <View style={styles.tab}>
+                            <View style={[styles.tabTextUnderline, {paddingBottom: 3}]}>
+                                <Text style={styles.tabTextOn}>CAMERA ROLL</Text>
+                            </View>
+                        </View>
+                    </TouchableWithoutFeedback>
+                </View>
+                <CameraRollSelector />
+            </View>
+        );
+    }
+}
