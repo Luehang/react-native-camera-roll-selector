@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "name": "react-native-camera-roll-selector",
   "description": "An easy and simple to use React Native component providing images selection from camera roll. The images in the camera roll are displayed with a custom high performant masonry layout. Supporting both iOS and Android. Free and made possible along with costly maintenance and updates by [Lue Hang](https://www.facebook.com/lue.hang) (the author).",
   "keywords": [
@@ -46,7 +46,7 @@
   ],
   "dependencies": {
     "prop-types": "^15.6.2",
-    "react-native-masonry-list": "^2.1.0"
+    "react-native-masonry-list": "^2.5.2"
   },
   "peerDependencies": {
     "react": "*",
