@@ -138,6 +138,8 @@ Add an ``import`` to the top of the file.
 
 At minimal, declare the ``CameraRollGallery`` component in the ``render()``.
 
+> If you like [`react-native-camera-roll-selector`](https://github.com/Luehang/react-native-camera-roll-selector), please be sure to give it a star at [GitHub](https://github.com/Luehang/react-native-camera-roll-selector).
+
 ```javascript
 import CameraRollSelector from "react-native-camera-roll-selector";
 
