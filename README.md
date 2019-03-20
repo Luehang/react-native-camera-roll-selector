@@ -6,6 +6,8 @@
 
 > An easy and simple to use React Native component providing images selection from camera roll. The images in the camera roll are displayed with a custom high performant masonry layout. Supporting both iOS and Android. Free and made possible along with costly maintenance and updates by [Lue Hang](https://www.facebook.com/lue.hang) (the author).
 
+> Check out the [docs](https://luehangs.site/lue_hang/projects/react-native-camera-roll-selector) for a complete documentation.
+
 <br/>
 <br/>
 <br/>
@@ -138,7 +140,7 @@ Add an ``import`` to the top of the file.
 
 At minimal, declare the ``CameraRollGallery`` component in the ``render()``.
 
-> If you like [`react-native-camera-roll-selector`](https://github.com/Luehang/react-native-camera-roll-selector), please be sure to give it a star at [GitHub](https://github.com/Luehang/react-native-camera-roll-selector).
+> If you like [`react-native-camera-roll-selector`](https://github.com/Luehang/react-native-camera-roll-selector), please be sure to give it a star at [GitHub](https://github.com/Luehang/react-native-camera-roll-selector). Thanks.
 
 ```javascript
 import CameraRollSelector from "react-native-camera-roll-selector";
@@ -215,6 +217,8 @@ render() {
 <br/>
 
 ## :large_blue_diamond: Reference
+
+> If you like [`react-native-camera-roll-selector`](https://github.com/Luehang/react-native-camera-roll-selector), please be sure to give it a star at [GitHub](https://github.com/Luehang/react-native-camera-roll-selector). Thanks.
 
 # Props
 
