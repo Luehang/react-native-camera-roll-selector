@@ -35,7 +35,8 @@
 # Index
 
 ### 1.  [Getting Started](#large_blue_diamond-getting-started)
-### 2.  [Manual Installation (Only iOS)](#large_blue_diamond-manual-installation)
+### 2.  [Android Installation](#large_blue_diamond-android-installation)
+### 3.  [iOS Installation](#large_blue_diamond-ios-installation)
 ### 3.  [Usage Example](#large_blue_diamond-usage-example)
 ### 4.  :books: [API](#large_blue_diamond-api)
 ### 5.  [Props](#large_blue_diamond-props)
@@ -76,13 +77,34 @@ $ yarn add react-native-camera-roll-selector
 <br/>
 <br/>
 
-## :large_blue_diamond: Manual Installation
+## :large_blue_diamond: Android Installation
+
+<br/>
+
+#### :information_source: **Android REQUIREMENT.**
+
+User's permission is required to access the Camera Roll.  Add the following to `AndroidManifest.xml` which can be found in `android/app/src/main`.
+
+```xml
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+```
+
+<br/>
+<br/>
+<br/>
+
+---
+<br/>
+<br/>
+<br/>
+
+## :large_blue_diamond: iOS Installation
 
 #### :information_source: **No further installation is required for Android.**
 
 <br/>
 
-#### :information_source: **THIS IS A REACT NATIVE AND iOS REQUIREMENT.**
+#### :information_source: **iOS REQUIREMENT.**
 
 1. `react-native-camera-roll-selector` uses React Native's [`CameraRoll`](https://facebook.github.io/react-native/docs/cameraroll) API. It requires the `RCTCameraRoll` library to be linked. Learn more about [Linking Libraries (iOS) clicking here](https://facebook.github.io/react-native/docs/linking-libraries-ios) or read for further instructions.
 
