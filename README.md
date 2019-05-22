@@ -297,7 +297,7 @@ number | No
 
 ### :small_blue_diamond: `groupTypes`
 
-The group where the photos will be fetched, one of "Album", "All", "Event", "Faces", "Library", "PhotoStream" and "SavedPhotos". Defaults to `"SavedPhotos"`.
+The group where the photos will be fetched, one of "Album", "All", "Event", "Faces", "Library", "PhotoStream" and "SavedPhotos". Defaults to `"All"`.
 
 TYPE | REQUIRED
 ------ | ------
