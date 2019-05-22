@@ -77,7 +77,7 @@ export default class CameraRollSelector extends React.PureComponent {
         initialColToRender: null,
         initialNumInColsToRender: 1,
         spacing: 1,
-        groupTypes: "SavedPhotos",
+        groupTypes: "All",
         assetType: "Photos",
         backgroundColor: "white",
         emptyText: "No photos.",
