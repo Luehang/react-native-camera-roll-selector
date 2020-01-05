@@ -282,8 +282,14 @@ Inorder to use these props, make sure `enableCameraRoll` prop is set to `true`.
 
 #### Install
 
-```javascript
+```bash
 $ npm install @react-native-community/cameraroll --save
+```
+
+or
+
+```bash
+$ yarn add @react-native-community/cameraroll
 ```
 
 #### Linking
@@ -308,8 +314,14 @@ User's permission is required to access the Camera Roll.  Add the following to `
 
 #### Install
 
-```javascript
+```bash
 $ npm install @react-native-community/cameraroll --save
+```
+
+or
+
+```bash
+$ yarn add @react-native-community/cameraroll
 ```
 
 #### Linking
