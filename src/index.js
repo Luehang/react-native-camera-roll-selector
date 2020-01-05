@@ -58,6 +58,10 @@ export default class CameraRollSelector extends React.PureComponent {
         onPressImage: PropTypes.func,
         onLongPressImage: PropTypes.func,
         containerWidth: PropTypes.number,
+        onEndReached: PropTypes.func,
+        onEndReachedThreshold: PropTypes.number,
+        refreshing: PropTypes.bool,
+        onRefresh: PropTypes.func,
         permissionDialogTitle: PropTypes.string,
         permissionDialogMessage: PropTypes.string,
         pendingAuthorizedView: PropTypes.oneOfType([
@@ -268,6 +272,10 @@ export default class CameraRollSelector extends React.PureComponent {
             onPressImage,
             onLongPressImage,
             containerWidth,
+            onEndReached,
+            onEndReachedThreshold,
+            refreshing,
+            onRefresh,
             pendingAuthorizedView,
             notAuthorizedView
         } = this.props;
@@ -332,7 +340,11 @@ export default class CameraRollSelector extends React.PureComponent {
                 }}
                 onEndReached={(info) => {
                     this._onEndReached(info);
+                    onEndReached && onEndReached(info);
                 }}
+				onEndReachedThreshold={onEndReachedThreshold}
+				refreshing={refreshing}
+				onRefresh={onRefresh}
             />
         ) : (
             <View style={[styles.error, {backgroundColor}]}>
