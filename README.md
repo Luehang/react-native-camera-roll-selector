@@ -236,6 +236,10 @@ render() {
 | `onLongPressImage`                   | Custom function that is executed after a long press on the image. `(item: Object, index: number) => void` | `Function` | |
 | `customMarker`                       | Custom selected image marker component. | `React.Element` | |
 | `containerWidth`                     | The width of the masonry list layout. Adding this will improve performance. | `number` | |
+| `onEndReached`                       | Called once when the scroll position gets within `onEndReachedThreshold` of the rendered content. `(info: {distanceFromEnd: number}) => void` |
+| `onEndReachedThreshold`       | How far from the end (in units of visible length of the list) the bottom edge of the list must be from the end of the content to trigger the `onEndReached` callback. Thus a value of 0.5 will trigger `onEndReached` when the end of the content is within half the visible length of the list. | `number` | |
+| `refreshing`                  | Set this true while waiting for new data from a refresh. | `boolean` | `false` |
+| `onRefresh`                   | If provided, a standard RefreshControl will be added for "Pull to Refresh" functionality. Make sure to also set the `refreshing` prop correctly. | `function` | |
 
 <br/>
 <br/>
