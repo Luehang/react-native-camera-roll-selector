@@ -50,7 +50,7 @@
   ],
   "dependencies": {
     "prop-types": "^15.6.2",
-    "react-native-masonry-list": "^2.15.0"
+    "react-native-masonry-list": "^2.15.2"
   },
   "optionalDependencies": {
     "@react-native-community/cameraroll": "*"
