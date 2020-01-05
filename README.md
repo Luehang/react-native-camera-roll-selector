@@ -190,7 +190,7 @@ render() {
 | Props | Description | Type | Default |
 | ----- | ----------- | ---- | ------- |
 | `callback`                           | Callback function when images was selected. `(selectedImages: Array, currentSelectedImage: Object) => void` | `Function` | (selectedImages, currentSelectedImage) => { console.log(currentSelectedImage); console.log(selectedImages); } |
-| `enableCameraRoll`                   | Enable the provide default CameraRoll. **Version \*2.0.0 update** | `bool` | `true` |
+| `enableCameraRoll`                   | Enable the provide default CameraRoll. **Version \*2.0.0 update** | `boolean` | `true` |
 | `onGetData`                          | Custom function to render provided images. `({ itemCount: number, groupTypes: string, assetType: string }) => { assets: object, pageInfo: { hasNextPage: boolean } }` Find an example at the [example section](#tada-example-usage-customization). **Version \*2.0.0 update** | `Function` | |
 | `imagesPerRow`                       | Number of images per row. | `number` | 3 |
 | `initialColToRender`                 | How many columns to render in the initial batch. | `number` | imagesPerRow |
