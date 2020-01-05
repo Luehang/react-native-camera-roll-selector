@@ -13,6 +13,8 @@ import {
     // Switch
 } from "react-native";
 import CameraRollSelector from "react-native-camera-roll-selector";
+// import CameraRoll from "@react-native-community/cameraroll";
+
 // import CameraRollSelector from "./src";
 
 const deviceHeight = Dimensions.get("window").height;
@@ -24,8 +26,8 @@ const settingsIcon = require("./assets/outline_settings_white_36pt_2x.png");
 export default class ReactNativeCameraRollSelectorExample extends Component {
     state = {
         isSettings: true,
-        imagesPerRow: 2,
-        spacing: 2,
+        imagesPerRow: 3,
+        spacing: 1,
         isContainerWidth: false,
         containerWidth: undefined,
         statusBarPaddingTop: isIPhoneX() ? 30 : platform === "ios" ? 20 : 0
@@ -104,8 +106,8 @@ export default class ReactNativeCameraRollSelectorExample extends Component {
                     spacing={spacing}
                     containerWidth={isContainerWidth ? containerWidth : undefined}
                     enableCameraRoll={false}
-                    onGetData={() => {
-                        return {
+                    onGetData={(fetchParams, resolve) => {
+                        resolve({
                             assets: [
                                 // Can be used with different image object fieldnames.
                                 // Ex. source, source.uri, uri, URI, url, URL
@@ -125,7 +127,7 @@ export default class ReactNativeCameraRollSelectorExample extends Component {
                             pageInfo: {
                                 hasNextPage: false
                             }
-                        };
+                        });
                     }}
                 /> */}
                 {/* <Modal animationType="fade"
