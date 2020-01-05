@@ -21,7 +21,7 @@
 
 ![react-native-camera-roll-selector landscape](https://luehangs.site/videos/react-native-camera-roll-selector-landscape.gif)
 
-#### :information_source: Learn more about React Native with project examples along with Cyber Security and Ethical Hacking at [LH LABS](https://www.luehangs.site).
+#### :information_source: Learn more about React Native with project examples along with Cyber Security and Ethical Hacking at [LueHsoft](https://www.luehangs.site).
 
 <br/>
 <br/>
@@ -37,10 +37,9 @@
 ### 1.  [Getting Started](#large_blue_diamond-getting-started)
 ### 2.  [Android Installation](#large_blue_diamond-android-installation)
 ### 3.  [iOS Installation](#large_blue_diamond-ios-installation)
-### 3.  [Usage Example](#large_blue_diamond-usage-example)
-### 4.  :books: [API](#large_blue_diamond-api)
-### 5.  [Props](#large_blue_diamond-props)
-### 6.  [Reference](#large_blue_diamond-reference)
+### 4.  [Usage Example](#large_blue_diamond-usage-example)
+### 5.  [API](#nut_and_bolt-api)
+### 6.  :books: [Props](#books-props)
 ### 7.  [Example Project](#large_blue_diamond-example-project)
 ### 8.  [Author](#large_blue_diamond-author)
 ### 9.  [Contribute](#large_blue_diamond-contribute)
@@ -189,445 +188,51 @@ render() {
 
 <br/>
 <br/>
-<br/>
-
----
-<br/>
+<a href="https://luehangs.site/marketplace/product/RN%20Posting%20Demo%20App%20Kit"><img src="https://luehangs.site/images/lh-mobile-strip.jpg" alt="LueHsoft LueH LABS Lue Hang luehang"/></a>
 <br/>
 <br/>
 
-## :large_blue_diamond: API
+## :nut_and_bolt: API
 
 ``<CameraRollSelector />`` component accepts the following props...
 
 <br/>
 
-## :large_blue_diamond: Props
-
-#### -  [`callback`](#small_blue_diamond-callback)
-#### -  [`imagesPerRow`](#small_blue_diamond-imagesperrow)
-#### -  [`initialColToRender`](#small_blue_diamond-initialcoltorender)
-#### -  [`initialNumInColsToRender`](#small_blue_diamond-initialnumincolstorender)
-#### -  [`spacing`](#small_blue_diamond-spacing)
-#### -  [`groupTypes`](#small_blue_diamond-grouptypes)
-#### -  [`assetType`](#small_blue_diamond-assettype)
-#### -  [`maximum`](#small_blue_diamond-maximum)
-#### -  [`selectSingleItem`](#small_blue_diamond-selectsingleitem)
-#### -  [`selected`](#small_blue_diamond-selected)
-#### -  [`backgroundColor`](#small_blue_diamond-backgroundcolor)
-#### -  [`emptyText`](#small_blue_diamond-emptytext)
-#### -  [`emptyTextStyle`](#small_blue_diamond-emptytextstyle)
-#### -  [`loaderColor`](#small_blue_diamond-loadercolor)
-#### -  [`customLoader`](#small_blue_diamond-customloader)
-#### -  [`imageContainerStyle`](#small_blue_diamond-imagecontainerstyle)
-#### -  [`markerColor`](#small_blue_diamond-markercolor)
-#### -  [`customMarker`](#small_blue_diamond-custommarker)
-#### -  [`renderIndividualHeader`](#small_blue_diamond-renderindividualheader)
-#### -  [`renderIndividualFooter`](#small_blue_diamond-renderindividualfooter)
-#### -  [`onPressImage`](#small_blue_diamond-onpressimage)
-#### -  [`onLongPressImage`](#small_blue_diamond-onlongpressimage)
-#### -  [`containerWidth`](#small_blue_diamond-containerwidth)
-#### -  [`permissionDialogTitle`](#small_blue_diamond-permissiondialogtitle)
-#### -  [`permissionDialogMessage`](#small_blue_diamond-permissiondialogmessage)
-#### -  [`pendingAuthorizedView`](#small_blue_diamond-pendingauthorizedview)
-#### -  [`notAuthorizedView`](#small_blue_diamond-notauthorizedview)
-
-<br/>
-<br/>
-<a href="https://luehangs.site/marketplace/product/RN%20Posting%20Demo%20App%20Kit"><img src="https://luehangs.site/images/lh-mobile-strip.jpg" alt="LueHsoft LueH LABS Lue Hang luehang"/></a>
-<br/>
-<br/>
-
-## :large_blue_diamond: Reference
+# :books: Props
 
 > If you like [`react-native-camera-roll-selector`](https://github.com/Luehang/react-native-camera-roll-selector), please be sure to give it a star at [GitHub](https://github.com/Luehang/react-native-camera-roll-selector). Thanks.
 
-# Props
-
 <br/>
 
-### :small_blue_diamond: `callback`
-
-```typescript
-
-(selectedImages: Array, currentSelectedImage: Object) => void
-
-```
-
-Callback function when images was selected. Defaults to `(selectedImages, currentSelectedImage) => { console.log(currentSelectedImage); console.log(selectedImages); }`.
-
-TYPE | REQUIRED
------- | ------
-Function | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `imagesPerRow`
-
-Number of images per row. Defaults to `3`.
-
-TYPE | REQUIRED
------- | ------
-number | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `initialColToRender`
-
-How many columns to render in the initial batch. Defaults to `imagesPerRow`.
-
-TYPE | REQUIRED
------- | ------
-String | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `initialNumInColsToRender`
-
-How many items to render in each column in the initial batch. Defaults to `1`.
-
-TYPE | REQUIRED
------- | ------
-number | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `spacing`
-
-Gutter size of the column. The spacing is a multiplier of 1% of the available view. Defaults to `1`.
-
-TYPE | REQUIRED
------- | ------
-number | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `groupTypes`
-
-The group where the photos will be fetched, one of "Album", "All", "Event", "Faces", "Library", "PhotoStream" and "SavedPhotos". Defaults to `"All"`.
-
-TYPE | REQUIRED
------- | ------
-String | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `assetType`
-
-The asset type, one of "Photos", "Videos" or "All". Defaults to `"Photos"`.
-
-TYPE | REQUIRED
------- | ------
-String | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `maximum`
-
-Maximum number of selected images. Defaults to `10`.
-
-TYPE | REQUIRED
------- | ------
-number | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `selectSingleItem`
-
-To select only one single image at time or not. Defaults to `false`.
-
-TYPE | REQUIRED
------- | ------
-Boolean | No
-
-<br/>
-<br/>
-<a href="https://luehangs.site/marketplace/product/RN%20Posting%20Demo%20App%20Kit"><img src="https://luehangs.site/images/lh-mobile-strip.jpg" alt="LueHsoft LueH LABS Lue Hang luehang"/></a>
-<br/>
-<br/>
-
-### :small_blue_diamond: `selected`
-
-An object of images in an array that are already selected. Defaults to `[]`.
-
-TYPE | REQUIRED
------- | ------
-Array | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `backgroundColor`
-
-Set the color of the background. Defaults to `"white"`.
-
-TYPE | REQUIRED
------- | ------
-String | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `emptyText`
-
-Text to display instead of a list when there are no photos found. Defaults to `"No photos."`.
-
-TYPE | REQUIRED
------- | ------
-String | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `emptyTextStyle`
-
-Styles to apply to the `emptyText`. Defaults to `{textAlign: "center"}`.
-
-TYPE | REQUIRED
------- | ------
-Object | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `loaderColor`
-
-The foreground color of the initial load spinner. Defaults to `"lightblue"`.
-
-TYPE | REQUIRED
------- | ------
-String | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `customLoader`
-
-Camera Roll loader component node. Defaults to `<ActivityIndicator />`.
-
-TYPE | REQUIRED
------- | ------
-React.Element | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `imageContainerStyle`
-
-The styles object which is added to the Image component. Defaults to `{}`.
-
-TYPE | REQUIRED
------- | ------
-Object | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `markerColor`
-
-The color of the marker image. Defaults to `"white"`.
-
-TYPE | REQUIRED
------- | ------
-string | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `renderIndividualHeader`
-
-```typescript
-
-(item: Object, index: number) => ?React.Element
-
-```
-
-Custom function that is executed **ABOVE** each individual masonry image.
-
-TYPE | REQUIRED
------- | ------
-Function | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `renderIndividualFooter`
-
-```typescript
-
-(item: Object, index: number) => ?React.Element
-
-```
-
-Custom function that is executed **BELOW** each individual masonry image.
-
-TYPE | REQUIRED
------- | ------
-Function | No
-
-<br/>
-<br/>
-<a href="https://luehangs.site/marketplace/product/RN%20Posting%20Demo%20App%20Kit"><img src="https://luehangs.site/images/lh-mobile-strip.jpg" alt="LueHsoft LueH LABS Lue Hang luehang"/></a>
-<br/>
-<br/>
-
-### :small_blue_diamond: `onPressImage`
-
-```typescript
-
-(item: Object, index: number) => void
-
-```
-
-Custom function that is executed after a single tap on the image.
-
-TYPE | REQUIRED
------- | ------
-Function | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `onLongPressImage`
-
-```typescript
-
-(item: Object, index: number) => void
-
-```
-
-Custom function that is executed after a long press on the image.
-
-TYPE | REQUIRED
------- | ------
-Function | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `customMarker`
-
-Custom selected image marker component.
-
-TYPE | REQUIRED
------- | ------
-React.Element | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `containerWidth`
-
-The width of the masonry list layout. Adding this will improve performance.
-
-TYPE | REQUIRED
------- | ------
-number | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `permissionDialogTitle`
-
-Starting on android M individual permissions must be granted for certain services, having access to the camera roll is one of them, you can use this to change the title of the dialog prompt requesting permissions. Defaults to `"Read Storage Permission"`.
-
-TYPE | REQUIRED
------- | ------
-String | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `permissionDialogMessage`
-
-Starting on android M individual permissions must be granted for certain services, having access to the camera roll is one of them, you can use this to change the content of the dialog prompt requesting permissions. Defaults to `"Needs access to your photos so you can use these awesome services."`.
-
-TYPE | REQUIRED
------- | ------
-String | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `pendingAuthorizedView`
-
-Starting on android M individual permissions must be granted for certain services, having access to the camera roll is one of them. This will be displayed when access to the camera roll has been denied. Defaults to `Waiting on access permission to camera roll.` message.
-
-TYPE | REQUIRED
------- | ------
-React.Element | No
-
-<br/>
-
-***
-<br/>
-
-### :small_blue_diamond: `notAuthorizedView`
-
-Starting on android M individual permissions must be granted for certain services, having access to the camera roll is one of them. This will be displayed when access to the camera roll has been denied completely. Defaults to `Access denied to camera roll.` message.
-
-TYPE | REQUIRED
------- | ------
-React.Element | No
-
-<br/>
-
-***
-<br/>
+| Props | Description | Type | Default |
+| ----- | ----------- | ---- | ------- |
+| `callback`                           | Callback function when images was selected. `(selectedImages: Array, currentSelectedImage: Object) => void` | `Function` | (selectedImages, currentSelectedImage) => { console.log(currentSelectedImage); console.log(selectedImages); } |
+| `imagesPerRow`                       | Number of images per row. | `number` | 3 |
+| `initialColToRender`                 | How many columns to render in the initial batch. | `number` | imagesPerRow |
+| `initialNumInColsToRender`           | How many items to render in each column in the initial batch. | `number` | 1 |
+| `spacing`                            | Gutter size of the column. The spacing is a multiplier of 1% of the available view. | `number` | 1 |
+| `groupTypes`                         | The group where the photos will be fetched, one of "Album", "All", "Event", "Faces", "Library", "PhotoStream" and "SavedPhotos". | `string` | "All" |
+| `assetType`                          | The asset type, one of "Photos", "Videos" or "All". | `string` | "Photos" |
+| `maximum`                            | Maximum number of selected images. | `number` | 10 |
+| `selectSingleItem`                   | To select only one single image at time or not. | `boolean` | false |
+| `selected`                           | An object of images in an array that are already selected. | `array` | [] |
+| `backgroundColor`                    | Set the color of the background. | `string` | "white" |
+| `emptyText`                          | Text to display instead of a list when there are no photos found. | `string` | "No photos." |
+| `emptyTextStyle`                     | Styles to apply to the `emptyText`. | `object` | {textAlign: "center"} |
+| `loaderColor`                        | The foreground color of the initial load spinner. | `string` | "lightblue" |
+| `customLoader`                       | Camera Roll loader component node. | `React.Element` | `<ActivityIndicator />` |
+| `imageContainerStyle`                | The styles object which is added to the Image component. | `object` | {} |
+| `markerColor`                        | The color of the marker image. | `string` | "white" |
+| `renderIndividualHeader`             | Custom function that is executed **ABOVE** each individual masonry image. `(item: Object, index: number) => ?React.Element` | `Function` | |
+| `renderIndividualFooter`                   | Custom function that is executed **BELOW** each individual masonry image. `(item: Object, index: number) => ?React.Element` | `Function` | |
+| `onPressImage`                   | Custom function that is executed after a single tap on the image. `(item: Object, index: number) => void` | `Function` | |
+| `onLongPressImage`                   | Custom function that is executed after a long press on the image. `(item: Object, index: number) => void` | `Function` | |
+| `customMarker`                   | Custom selected image marker component. | `React.Element` | |
+| `containerWidth`                   | The width of the masonry list layout. Adding this will improve performance. | `number` | |
+| `permissionDialogTitle`                   | Starting on android M individual permissions must be granted for certain services, having access to the camera roll is one of them, you can use this to change the title of the dialog prompt requesting permissions. | `string` | "Read Storage Permission" |
+| `permissionDialogMessage`                   | Starting on android M individual permissions must be granted for certain services, having access to the camera roll is one of them, you can use this to change the content of the dialog prompt requesting permissions. | `string` | "Needs access to your photos so you can use these awesome services." |
+| `pendingAuthorizedView`                   | Starting on android M individual permissions must be granted for certain services, having access to the camera roll is one of them. This will be displayed when access to the camera roll has been denied. | `React.Element` | Defaults to `Waiting on access permission to camera roll.` message. |
+| `notAuthorizedView`                   | Starting on android M individual permissions must be granted for certain services, having access to the camera roll is one of them. This will be displayed when access to the camera roll has been denied completely. | `React.Element` | Defaults to `Access denied to camera roll.` message. |
 
 <br/>
 <br/>
@@ -639,12 +244,9 @@ React.Element | No
 
 Perform steps 1-2 to run locally:
 
-1. [Clone the Repo](#1-clone-the-repo)
-2. [Install and Run](#2-install-and-run)
-
-<br/>
-
-### :small_blue_diamond: 1. Clone the Repo
+<details>
+<summary>1. Clone the Repo</summary>
+</br>
 
 **Clone** `react-native-camera-roll-selector` locally. In a terminal, run:
 
@@ -652,9 +254,11 @@ Perform steps 1-2 to run locally:
 $ git clone https://github.com/Luehang/react-native-camera-roll-selector.git react-native-camera-roll-selector
 ```
 
-<br/>
+</details>
 
-### :small_blue_diamond: 2. Install and Run
+<details>
+<summary>2. Install and Run</summary>
+</br>
 
 ```bash
 $ cd react-native-camera-roll-selector/example/
@@ -672,6 +276,8 @@ $ cd react-native-camera-roll-selector/example/
 	2. npm install
 	3. emulator running in separate terminal
 	4. npm run android
+
+</details>
 
 <br/>
 <br/>
