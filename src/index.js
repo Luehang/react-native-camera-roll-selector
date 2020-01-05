@@ -20,6 +20,7 @@ export default class CameraRollSelector extends React.PureComponent {
         itemCount: PropTypes.number,
         catchGetPhotosError: PropTypes.func,
         callback: PropTypes.func,
+        enableSelect: PropTypes.bool,
         imagesPerRow: PropTypes.number,
         initialColToRender: PropTypes.number,
         initialNumInColsToRender: PropTypes.number,
@@ -78,6 +79,7 @@ export default class CameraRollSelector extends React.PureComponent {
             console.log(selectedImages);
             /* eslint-enable no-console */
         },
+        enableSelect: true,
         imagesPerRow: 3,
         initialColToRender: null,
         initialNumInColsToRender: 1,
@@ -220,10 +222,10 @@ export default class CameraRollSelector extends React.PureComponent {
             loadingMore: false,
             initialLoading: false,
         };
-    
+
         var data = this.props.onGetData
             && this.props.onGetData();
-    
+
         if (typeof data === "object") {
             var assets = data.assets;
             if (
@@ -232,22 +234,23 @@ export default class CameraRollSelector extends React.PureComponent {
             ) {
                 newState.noMore = true;
             }
-    
+
             if (assets && assets.length > 0) {
                 var extractedData = assets
                     .filter((asset) => findUri(asset) ? true : false);
-        
+
                 newState.data = this.state.data.concat(extractedData);
                 // console.log(newState.data.length);
             }
         }
-    
+
         this.setState(newState);
     }
 
     render() {
         const {
             enableCameraRoll,
+            enableSelect,
             imagesPerRow,
             initialColToRender,
             initialNumInColsToRender,
@@ -306,16 +309,21 @@ export default class CameraRollSelector extends React.PureComponent {
                 containerWidth={containerWidth}
                 renderIndividualHeader={renderIndividualHeader}
                 renderIndividualFooter={renderIndividualFooter}
-                onPressImage={onPressImage}
-                onLongPressImage={onLongPressImage}
                 completeCustomComponent={({ source, style, data }) => {
                     return (
                         <TouchableImageComponent
+                            enableSelect={enableSelect}
                             data={data}
                             source={source}
                             style={style}
                             isMaxSelected={this._isMaxSelected.bind(this)}
-                            onPressImage={(item) => this._selectImage(item)}
+                            onPressImage={(item, i) => {
+                                if (enableSelect) {
+                                    this._selectImage(item);
+                                }
+                                onPressImage && onPressImage(item, i);
+                            }}
+                            onLongPressImage={onLongPressImage}
                             imageContainerStyle={imageContainerStyle}
                             markerColor={markerColor}
                             customMarker={customMarker}

@@ -5,6 +5,7 @@ import ImageComponent from "./ImageComponent";
 
 export default class TouchableImageComponent extends React.PureComponent {
 	static propTypes = {
+		enableSelect: PropTypes.bool.isRequired,
 		data: PropTypes.object.isRequired,
 		source: PropTypes.any.isRequired,
 		style: PropTypes.object.isRequired,
@@ -21,8 +22,8 @@ export default class TouchableImageComponent extends React.PureComponent {
 		selected: false
 	}
 
-	_onPressImage(data, index) {
-		const { onPressImage, isMaxSelected } = this.props;
+	_onPressImage = () => {
+		const { isMaxSelected } = this.props;
 		const isMax = isMaxSelected();
 
 		if (!isMax && !this.state.selected) {
@@ -32,13 +33,12 @@ export default class TouchableImageComponent extends React.PureComponent {
 		} else if (isMax && this.state.selected) {
 			this.setState({ selected: false });
 		}
-		onPressImage && onPressImage(data, index);
 	}
 
 	render() {
 		const {
-			data, source, style, imageContainerStyle,
-			markerColor, customMarker,
+			enableSelect, data, source, style, imageContainerStyle,
+			markerColor, customMarker, onPressImage,
 			onLongPressImage, customImageComponent,
 			customImageProps
 		} = this.props;
@@ -54,8 +54,15 @@ export default class TouchableImageComponent extends React.PureComponent {
 
 		return (
 			<TouchableOpacity
-				onPress={() => this._onPressImage(data, data.index)}
-				onLongPress={() => onLongPressImage && onLongPressImage(data, data.index)}>
+				onPress={() => {
+					if (enableSelect) {
+						this._onPressImage();
+					}
+					onPressImage && onPressImage(data, data.index);
+				}}
+				onLongPress={() => {
+					onLongPressImage && onLongPressImage(data, data.index);
+				}}>
 				<ImageComponent
 					source={source}
 					style={style}
