@@ -86,7 +86,7 @@ $ yarn add react-native-camera-roll-selector
 
 ## :tada: Example Usage Customization
 
-**Version \*2.0.0 update**
+**Version \*2.2.0 update**
 
 > If you like [`react-native-camera-roll-selector`](https://github.com/Luehang/react-native-camera-roll-selector), please be sure to give it a star at [GitHub](https://github.com/Luehang/react-native-camera-roll-selector). Thanks.
 
