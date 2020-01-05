@@ -125,6 +125,21 @@ render() {
                     }
                 }
             }}
+            callback={(selectedImages, currentSelectedImage) => {
+                console.log(
+                    "Current selected image: ",
+                    currentSelectedImage
+                );
+                console.log(
+                    "Selected images: ",
+                    selectedImages
+                );
+            }}
+
+            // OPTIONAL PROP USAGE.
+            enableSelect={true} // default true
+            imagesPerRow={3} // default 3
+            spacing={1} // default 1
         />
     );
 }
@@ -163,6 +178,11 @@ render() {
                     selectedImages
                 );
             }}
+
+            // OPTIONAL PROP USAGE.
+            enableSelect={true} // default true
+            imagesPerRow={3} // default 3
+            spacing={1} // default 1
         />
     );
 }
