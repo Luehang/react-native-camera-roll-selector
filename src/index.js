@@ -1,7 +1,6 @@
 import React from "react";
 import {
     PermissionsAndroid,
-    CameraRoll,
     Platform,
     StyleSheet,
     ActivityIndicator,
@@ -10,10 +9,16 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import MasonryList from "react-native-masonry-list";
+
 import TouchableImageComponent from "./TouchableImageComponent";
+import { findUri } from "./utils";
 
 export default class CameraRollSelector extends React.PureComponent {
     static propTypes = {
+        enableCameraRoll: PropTypes.bool,
+        onGetData: PropTypes.func,
+        itemCount: PropTypes.number,
+        catchGetPhotosError: PropTypes.func,
         callback: PropTypes.func,
         imagesPerRow: PropTypes.number,
         initialColToRender: PropTypes.number,
@@ -62,11 +67,11 @@ export default class CameraRollSelector extends React.PureComponent {
             PropTypes.node,
             // PropTypes.func
         ]),
-
-
     }
 
     static defaultProps = {
+        enableCameraRoll: true,
+        itemCount: 500,
         callback: (selectedImages, currentSelectedImage) => {
             /* eslint-disable no-console */
             console.log(currentSelectedImage);
@@ -99,7 +104,9 @@ export default class CameraRollSelector extends React.PureComponent {
             data: [],
             selected: this.props.selected,
             lastCursor: null,
-            permissionGranted: Platform.OS === "ios" ? "granted" : "denied",
+            permissionGranted: !this.props.enableCameraRoll
+                ? "granted" : Platform.OS === "ios"
+                ? "granted" : "denied",
             initialLoading: true,
             loadingMore: false,
             noMore: false,
@@ -107,45 +114,50 @@ export default class CameraRollSelector extends React.PureComponent {
     }
 
     componentWillMount = async () => {
-        if (Platform.OS === "android") {
-            const granted = await PermissionsAndroid.request(
-                PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-                {
-                    "title": this.props.permissionDialogTitle,
-                    "message": this.props.permissionDialogMessage
+        if (this.props.enableCameraRoll) {
+            if (Platform.OS === "android") {
+                const granted = await PermissionsAndroid.request(
+                    PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+                    {
+                        "title": this.props.permissionDialogTitle,
+                        "message": this.props.permissionDialogMessage
+                    }
+                );
+                if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                    this.setState({
+                        permissionGranted: "granted"
+                    });
+                    this.fetch();
+                } else if (granted === PermissionsAndroid.RESULTS.DENIED) {
+                    this.setState({
+                        permissionGranted: "denied"
+                    });
+                } else if (granted === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
+                    this.setState({
+                        permissionGranted: "never_ask_again"
+                    });
                 }
-            );
-            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                this.setState({
-                    permissionGranted: "granted"
-                });
-                this.fetch();
-            } else if (granted === PermissionsAndroid.RESULTS.DENIED) {
-                this.setState({
-                    permissionGranted: "denied"
-                });
-            } else if (granted === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
-                this.setState({
-                    permissionGranted: "never_ask_again"
-                });
             }
-        }
-        if (Platform.OS === "ios") {
+            if (Platform.OS === "ios") {
+                this.fetch();
+            }
+        } else {
             this.fetch();
         }
     }
 
-    fetch() {
+    fetch = () => {
         if (!this.state.loadingMore) {
-            this.setState({loadingMore: true}, () => { this._fetch(); });
+            // console.log("fetch");
+            this.setState({ loadingMore: true }, () => { this._fetch(); });
         }
     }
 
-    _fetch() {
-        const { groupTypes, assetType } = this.props;
+    _fetch = () => {
+        const { itemCount, groupTypes, assetType, catchGetPhotosError } = this.props;
 
         const fetchParams = {
-            first: 1000,
+            first: itemCount,
             groupTypes: groupTypes,
             assetType: assetType,
         };
@@ -159,12 +171,29 @@ export default class CameraRollSelector extends React.PureComponent {
             fetchParams.after = this.state.lastCursor;
         }
 
-        CameraRoll.getPhotos(fetchParams)
-            // eslint-disable-next-line no-console
-            .then((data) => this._appendImages(data), (e) => console.log(e));
+        if (this.props.enableCameraRoll) {
+            var CameraRoll;
+            if (parseFloat(require("react-native/package.json").version) >= 0.6) {
+                CameraRoll = require("@react-native-community/cameraroll");
+            } else {
+                CameraRoll = require("react-native").CameraRoll;
+            }
+            CameraRoll.getPhotos(fetchParams)
+                .then((data) => this._appendImages(data))
+                .catch((e) => {
+                    catchGetPhotosError &&
+                        catchGetPhotosError(e);
+                });
+        } else {
+            this._appendRemoteImages({
+                itemCount: fetchParams.first,
+                groupTypes: fetchParams.groupTypes,
+                assetType: fetchParams.assetType
+            });
+        }
     }
 
-    _appendImages(data) {
+    _appendImages = (data) => {
         const assets = data.edges;
 
         const newState = {
@@ -185,8 +214,40 @@ export default class CameraRollSelector extends React.PureComponent {
         this.setState(newState);
     }
 
+    _appendRemoteImages = () => {
+        // console.log("_appendRemoteImages");
+        var newState = {
+            loadingMore: false,
+            initialLoading: false,
+        };
+    
+        var data = this.props.onGetData
+            && this.props.onGetData();
+    
+        if (typeof data === "object") {
+            var assets = data.assets;
+            if (
+                !data.pageInfo
+                || (data.pageInfo && !data.pageInfo.hasNextPage)
+            ) {
+                newState.noMore = true;
+            }
+    
+            if (assets && assets.length > 0) {
+                var extractedData = assets
+                    .filter((asset) => findUri(asset) ? true : false);
+        
+                newState.data = this.state.data.concat(extractedData);
+                // console.log(newState.data.length);
+            }
+        }
+    
+        this.setState(newState);
+    }
+
     render() {
         const {
+            enableCameraRoll,
             imagesPerRow,
             initialColToRender,
             initialNumInColsToRender,
@@ -235,7 +296,7 @@ export default class CameraRollSelector extends React.PureComponent {
         const flatListOrEmptyText = this.state.data.length > 0 ? (
             <MasonryList
                 sorted={true}
-                itemSource={["node", "image"]}
+                itemSource={enableCameraRoll ? ["node", "image"] : undefined}
                 images={this.state.data}
                 columns={imagesPerRow}
                 initialColToRender={initialColToRender ? initialColToRender : imagesPerRow}
@@ -261,6 +322,9 @@ export default class CameraRollSelector extends React.PureComponent {
                         />
                     );
                 }}
+                onEndReached={(info) => {
+                    this._onEndReached(info);
+                }}
             />
         ) : (
             <View style={[styles.error, {backgroundColor}]}>
@@ -276,23 +340,30 @@ export default class CameraRollSelector extends React.PureComponent {
         );
     }
 
-    // _onEndReached = () => {
-    //   if (!this.state.noMore) {
-    //     this.fetch();
-    //   }
-    // }
+    _onEndReached = (info) => {
+        if (!this.state.noMore) {
+            this.fetch(info);
+        }
+    }
 
-    _isMaxSelected() {
+    _isMaxSelected = () => {
         const { maximum } = this.props;
 
         return maximum === this.state.selected.length;
     }
 
-    _selectImage(image) {
-        const { maximum, callback, selectSingleItem } = this.props;
+    _selectImage = (image) => {
+        const {
+            enableCameraRoll,
+            maximum,
+            callback,
+            selectSingleItem
+        } = this.props;
+        const selected = this.state.selected;
 
-        const selected = this.state.selected,
-            index = this._arrayObjectIndexOf(selected, "uri", image.node.image.uri);
+        const index = enableCameraRoll
+            ? this._arrayObjectIndexOf(selected, "uri", image.node.image.uri)
+            : this._arrayObjectIndexOf(selected, "uri", image.source.uri);
 
         if (index >= 0) {
             selected.splice(index, 1);
@@ -312,10 +383,13 @@ export default class CameraRollSelector extends React.PureComponent {
         callback(selected, image);
     }
 
-    _arrayObjectIndexOf(array, property, value) {
-        return array.map((o) => { return o.node.image[property]; }).indexOf(value);
+    _arrayObjectIndexOf = (array, property, value) => {
+        const { enableCameraRoll } = this.props;
+        if (enableCameraRoll) {
+            return array.map((o) => { return o.node.image[property]; }).indexOf(value);
+        }
+        return array.map((o) => { return o.source[property]; }).indexOf(value);
     }
-
 }
 
 const styles = StyleSheet.create({
