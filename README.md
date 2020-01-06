@@ -137,6 +137,7 @@ render() {
             }}
 
             // OPTIONAL PROP USAGE.
+            maximum={10} // Max number of selected images. 10 default.
             enableSelect={true} // default true
             imagesPerRow={3} // default 3
             spacing={1} // default 1
@@ -180,6 +181,7 @@ render() {
             }}
 
             // OPTIONAL PROP USAGE.
+            maximum={10} // Max number of selected images. 10 default.
             enableSelect={true} // default true
             imagesPerRow={3} // default 3
             spacing={1} // default 1
