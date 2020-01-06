@@ -219,7 +219,7 @@ render() {
 | `initialColToRender`                 | How many columns to render in the initial batch. | `number` | imagesPerRow |
 | `initialNumInColsToRender`           | How many items to render in each column in the initial batch. | `number` | 1 |
 | `spacing`                            | Gutter size of the column. The spacing is a multiplier of 1% of the available view. | `number` | 1 |
-| `itemCount`                          | The number of item to fetch and render. **Version \*2.0.0 update** | `number` | 500 |
+| `itemCount`                          | The number of item to fetch and render. **Version \*2.0.0 update** | `number` | 200 |
 | `groupTypes`                         | The group where the photos will be fetched, one of "Album", "All", "Event", "Faces", "Library", "PhotoStream" and "SavedPhotos". | `string` | "All" |
 | `assetType`                          | The asset type, one of "Photos", "Videos" or "All". | `string` | "Photos" |
 | `maximum`                            | Maximum number of selected images. | `number` | 10 |
