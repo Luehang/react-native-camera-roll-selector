@@ -116,6 +116,7 @@ export default class CameraRollSelector extends React.PureComponent {
             initialLoading: true,
             loadingMore: false,
             noMore: false,
+            totalCount: 0
         };
     }
 
@@ -161,9 +162,10 @@ export default class CameraRollSelector extends React.PureComponent {
 
     _fetch = () => {
         const { itemCount, groupTypes, assetType, catchGetPhotosError } = this.props;
+        const { totalCount } = this.state;
 
         const fetchParams = {
-            first: itemCount,
+            first: totalCount + itemCount,
             groupTypes: groupTypes,
             assetType: assetType,
         };
@@ -192,6 +194,7 @@ export default class CameraRollSelector extends React.PureComponent {
                 });
         } else {
             this._appendRemoteImages({
+                previousCount: totalCount,
                 itemCount: fetchParams.first,
                 groupTypes: fetchParams.groupTypes,
                 assetType: fetchParams.assetType
@@ -200,9 +203,12 @@ export default class CameraRollSelector extends React.PureComponent {
     }
 
     _appendImages = (data) => {
+        const { itemCount } = this.props;
+        const { totalCount } = this.state;
         const assets = data.edges;
 
         const newState = {
+            totalCount: totalCount + itemCount,
             loadingMore: false,
             initialLoading: false,
         };
@@ -213,7 +219,7 @@ export default class CameraRollSelector extends React.PureComponent {
 
         if (assets.length > 0) {
             newState.lastCursor = data.page_info.end_cursor;
-            const extractedData = this.state.data.concat(assets);
+            const extractedData = assets;
             newState.data = extractedData;
         }
 
@@ -222,7 +228,10 @@ export default class CameraRollSelector extends React.PureComponent {
 
     _appendRemoteImages = async (fetchParams) => {
         // console.log("_appendRemoteImages");
+        const { itemCount } = this.props;
+        const { totalCount } = this.state;
         var newState = {
+            totalCount: totalCount + itemCount,
             loadingMore: false,
             initialLoading: false,
         };
