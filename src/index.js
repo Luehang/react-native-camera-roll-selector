@@ -76,7 +76,7 @@ export default class CameraRollSelector extends React.PureComponent {
 
     static defaultProps = {
         enableCameraRoll: true,
-        itemCount: 200,
+        itemCount: 25,
         callback: (selectedImages, currentSelectedImage) => {
             /* eslint-disable no-console */
             console.log(currentSelectedImage);
