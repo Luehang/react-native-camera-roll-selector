@@ -161,7 +161,7 @@ export default class CameraRollSelector extends React.PureComponent {
     }
 
     _fetch = () => {
-        const { itemCount, groupTypes, assetType, catchGetPhotosError } = this.props;
+        const { itemCount, groupTypes, assetType } = this.props;
         const { totalCount } = this.state;
 
         const fetchParams = {
@@ -180,20 +180,9 @@ export default class CameraRollSelector extends React.PureComponent {
         }
 
         if (this.props.enableCameraRoll) {
-            var CameraRoll;
-            if (parseFloat(require("react-native/package.json").version) >= 0.6) {
-                CameraRoll = require("@react-native-community/cameraroll");
-            } else {
-                CameraRoll = require("react-native").CameraRoll;
-            }
-            CameraRoll.getPhotos(fetchParams)
-                .then((data) => this._appendImages(data))
-                .catch((e) => {
-                    catchGetPhotosError &&
-                        catchGetPhotosError(e);
-                });
+            this._fetchImages(fetchParams);
         } else {
-            this._appendRemoteImages({
+            this._fetchRemoteImages({
                 previousCount: totalCount,
                 itemCount: this.props.itemCount,
                 groupTypes: fetchParams.groupTypes,
@@ -202,31 +191,77 @@ export default class CameraRollSelector extends React.PureComponent {
         }
     }
 
-    _appendImages = (data) => {
-        const { itemCount } = this.props;
+    _fetchImages = async (fetchParams) => {
+        const { catchGetPhotosError } = this.props;
         const { totalCount } = this.state;
-        const assets = data.edges;
 
         const newState = {
-            totalCount: totalCount + itemCount,
             loadingMore: false,
             initialLoading: false,
         };
+
+        var data = await new Promise((resolve) => {
+            var CameraRoll;
+            if (parseFloat(require("react-native/package.json").version) >= 0.6) {
+                CameraRoll = require("@react-native-community/cameraroll");
+            } else {
+                CameraRoll = require("react-native").CameraRoll;
+            }
+            CameraRoll.getPhotos(fetchParams)
+                .then((data) => {
+                    const images = data.edges;
+                    const parseData = images
+                    .slice(totalCount)
+                    .map((item) => {
+                        return {
+                            node: item.node,
+                            ...item.node,
+                            ...item.node.image
+                        };
+                    });
+                    resolve({
+                        assets: parseData,
+                        page_info: data.page_info
+                    });
+                })
+                .catch((e) => {
+                    catchGetPhotosError &&
+                        catchGetPhotosError(e);
+                });
+        });
+
+        if (typeof data === "object") {
+            var assets = data.assets;
+
+            if (assets.length > 0) {
+                var extractedData = assets
+                    .map((asset, index) => {
+                        return {
+                            index: index,
+                            id: Math.random().toString(36).substring(7),
+                            source: {
+                                uri: asset.uri
+                            },
+                            uri: asset.uri,
+                            ...asset,
+                        };
+                    });
+
+                newState.totalCount = totalCount + extractedData.length;
+                newState.data = this.state.data.concat(extractedData);
+            }
+        }
+
+        // newState.lastCursor = data.page_info.end_cursor;
 
         if (!data.page_info.has_next_page) {
             newState.noMore = true;
         }
 
-        if (assets.length > 0) {
-            newState.lastCursor = data.page_info.end_cursor;
-            const extractedData = assets;
-            newState.data = extractedData;
-        }
-
         this.setState(newState);
     }
 
-    _appendRemoteImages = async (fetchParams) => {
+    _fetchRemoteImages = async (fetchParams) => {
         // console.log("_appendRemoteImages");
         const { totalCount } = this.state;
         var newState = {
@@ -265,7 +300,6 @@ export default class CameraRollSelector extends React.PureComponent {
 
     render() {
         const {
-            enableCameraRoll,
             enableSelect,
             imagesPerRow,
             initialColToRender,
@@ -319,7 +353,6 @@ export default class CameraRollSelector extends React.PureComponent {
         const flatListOrEmptyText = this.state.data.length > 0 ? (
             <MasonryList
                 sorted={true}
-                itemSource={enableCameraRoll ? ["node", "image"] : undefined}
                 images={this.state.data}
                 columns={imagesPerRow}
                 initialColToRender={initialColToRender ? initialColToRender : imagesPerRow}
