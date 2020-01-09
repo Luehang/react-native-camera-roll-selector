@@ -195,7 +195,7 @@ export default class CameraRollSelector extends React.PureComponent {
         } else {
             this._appendRemoteImages({
                 previousCount: totalCount,
-                itemCount: fetchParams.first,
+                itemCount: this.props.itemCount,
                 groupTypes: fetchParams.groupTypes,
                 assetType: fetchParams.assetType
             });
@@ -228,10 +228,8 @@ export default class CameraRollSelector extends React.PureComponent {
 
     _appendRemoteImages = async (fetchParams) => {
         // console.log("_appendRemoteImages");
-        const { itemCount } = this.props;
         const { totalCount } = this.state;
         var newState = {
-            totalCount: totalCount + itemCount,
             loadingMore: false,
             initialLoading: false,
         };
@@ -257,6 +255,7 @@ export default class CameraRollSelector extends React.PureComponent {
                     .filter((asset) => findUri(asset) ? true : false);
 
                 newState.data = this.state.data.concat(extractedData);
+                newState.totalCount = totalCount + extractedData.length;
                 // console.log(newState.data.length);
             }
         }
